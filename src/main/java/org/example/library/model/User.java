@@ -34,4 +34,7 @@ public class User {
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Address address;
 
+    @OneToMany
+    private List<Rental> rentals;
+
 }

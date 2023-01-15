@@ -31,7 +31,8 @@ class LoginControllerTest {
                                     new Role(1, "USER"),
                                     new Role(2, "ADMIN")
                             ),
-                            null)
+                            null,
+                            List.of())
                     )
             )
     );

@@ -1,15 +1,25 @@
 package org.example.library.dao;
 
+import org.example.library.ActiveUser;
+import org.example.library.ApplicationContext;
+import org.example.library.model.Book;
+import org.example.library.model.Rental;
 import org.example.library.model.User;
 import org.example.library.utils.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class UserDao implements UserProvider {
 
-    private static final String SEARCH_BY_LOGIN_QUERY = "from User u where u.login=:login";
+    private static final String SEARCH_BY_LOGIN_QUERY = "from User u " +
+            "join fetch u.roles" +
+            "join fetch u.rentals r " +
+            "join fetch r.book " +
+            "where u.login=:login";
 
     @Override
     public Optional<User> findUserByLogin(String login) {
@@ -19,6 +29,15 @@ public class UserDao implements UserProvider {
         Optional<User> user = query.getResultList().stream().findFirst();
         session.close();
         return user;
+    }
+
+    public List<Rental> getRentalsOfUser() {
+        // Do przeniesienia
+        ActiveUser activeUser = ApplicationContext.getActiveUser();
+        Optional<User> user = findUserByLogin(activeUser.getLogin());
+        return user.stream().
+                flatMap(user1 -> user1.getRentals().stream())
+                .collect(Collectors.toList());
     }
 
 }

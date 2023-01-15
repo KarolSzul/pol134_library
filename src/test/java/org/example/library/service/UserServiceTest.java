@@ -5,13 +5,15 @@ import org.example.library.dao.UserProvider;
 import org.example.library.model.User;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class UserServiceTest {
 
-    private final static User EXISTING_USER = new User(1, "existingLogin", "password", "name", "email", null, null);
+    private final static User EXISTING_USER = new User(1, "existingLogin", "password", "name",
+            "email", null, null, List.of());
 
     /*private final UserService userService = new UserService(
             login -> Optional.of(existingUser)
