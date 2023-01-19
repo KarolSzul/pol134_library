@@ -19,6 +19,7 @@
         <mapping class="org.example.library.model.Book"/>
         <mapping class="org.example.library.model.Role"/>
         <mapping class="org.example.library.model.Author"/>
+        <mapping class="org.example.library.model.Rental"/>
 
     </session-factory>
 </hibernate-configuration>

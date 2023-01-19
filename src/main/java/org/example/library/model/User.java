@@ -34,7 +34,7 @@ public class User {
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Address address;
 
-    @OneToMany
+    @OneToMany (fetch=FetchType.EAGER)
     private List<Rental> rentals;
 
 }

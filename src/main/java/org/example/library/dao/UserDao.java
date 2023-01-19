@@ -16,9 +16,9 @@ import java.util.stream.Collectors;
 public class UserDao implements UserProvider {
 
     private static final String SEARCH_BY_LOGIN_QUERY = "from User u " +
-            "join fetch u.roles" +
+//            "join fetch u.roles " +
             "join fetch u.rentals r " +
-            "join fetch r.book " +
+            "join fetch r.book b " +
             "where u.login=:login";
 
     @Override
@@ -31,13 +31,6 @@ public class UserDao implements UserProvider {
         return user;
     }
 
-    public List<Rental> getRentalsOfUser() {
-        // Do przeniesienia
-        ActiveUser activeUser = ApplicationContext.getActiveUser();
-        Optional<User> user = findUserByLogin(activeUser.getLogin());
-        return user.stream().
-                flatMap(user1 -> user1.getRentals().stream())
-                .collect(Collectors.toList());
-    }
+
 
 }
