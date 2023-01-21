@@ -61,7 +61,7 @@ public class NewUserView implements View {
         String login = scanner.nextLine();
         if (isLoginPresent(login)) {
             System.out.println("Login juz istnieje!");
-            getAndVerifyLogin();
+            return getAndVerifyLogin();
         }
         return login;
     }
@@ -72,7 +72,7 @@ public class NewUserView implements View {
         String email = scanner.nextLine();
         if (!isEmailFormatCorrect(email)) {
             System.out.println("Zly format e-mail!");
-            getAndVerifyEmail();
+            return getAndVerifyEmail();
         }
         return email;
     }
@@ -83,7 +83,7 @@ public class NewUserView implements View {
         String postalCode = scanner.nextLine();
         if (!isPostalCodeFormatCorrect(postalCode)) {
             System.out.println("Zly format kodu pocztowego!");
-            getAndVerifyPostalCode();
+            return getAndVerifyPostalCode();
         }
         return postalCode;
     }

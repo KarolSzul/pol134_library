@@ -16,7 +16,7 @@ import javax.persistence.Id;
 public class Address {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
     private String postalCode;
     private String city;

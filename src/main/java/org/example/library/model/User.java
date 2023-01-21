@@ -14,7 +14,7 @@ import java.util.Set;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
     private String login;
     private String password;
@@ -32,6 +32,6 @@ public class User {
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Address address;
 
-    @OneToMany //(fetch=FetchType.EAGER)
+    @OneToMany(mappedBy = "user") //(fetch=FetchType.EAGER)
     private Set<Rental> rentals;
 }
