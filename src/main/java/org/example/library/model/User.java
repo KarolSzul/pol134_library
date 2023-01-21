@@ -1,12 +1,10 @@
 package org.example.library.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -23,18 +21,17 @@ public class User {
     private String name;
     private String email;
 
-    @ManyToMany
+    @ManyToMany//(fetch=FetchType.EAGER)
     @JoinTable(
             name = "User_Role",
-            joinColumns = { @JoinColumn(name = "user_id")},
-            inverseJoinColumns = { @JoinColumn(name = "role_id")}
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "role_id")}
     )
-    private List<Role> roles;
+    private Set<Role> roles;
 
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Address address;
 
-    @OneToMany (fetch=FetchType.EAGER)
-    private List<Rental> rentals;
-
+    @OneToMany //(fetch=FetchType.EAGER)
+    private Set<Rental> rentals;
 }

@@ -23,5 +23,4 @@ public class Rental {
     private LocalDate rentDate;
     private LocalDate returnDate;
     private LocalDate dueDate;
-
 }

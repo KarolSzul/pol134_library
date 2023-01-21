@@ -6,5 +6,4 @@ public class MainMenuView implements View {
     public void display() {
         System.out.println("Main Menu");
     }
-
 }

@@ -13,12 +13,13 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class UserDao implements UserProvider {
+public class UserDao implements UserProvider, UserLoader {
 
-    private static final String SEARCH_BY_LOGIN_QUERY = "from User u " +
-//            "join fetch u.roles " +
-            "join fetch u.rentals r " +
-            "join fetch r.book b " +
+    private static final String SEARCH_BY_LOGIN_QUERY = "select u from User as u " +
+            "left join fetch u.roles " +
+            "left join fetch u.address " +
+            "left join fetch u.rentals as r " +
+            "left join fetch r.book as b " +
             "where u.login=:login";
 
     @Override
@@ -32,5 +33,13 @@ public class UserDao implements UserProvider {
     }
 
 
+    @Override
+    public void addNewUser(User user) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.getTransaction().begin();
+        session.persist(user);
+        session.getTransaction().commit();
+        session.close();
 
+    }
 }

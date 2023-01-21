@@ -16,6 +16,7 @@ public class UserService implements UserLoginChecker {
 
     @Override
     public Optional<User> checkAndGet(UserLoginData userLoginData) {
+        var test = userProvider.findUserByLogin(userLoginData.getLogin());
         return userProvider.findUserByLogin(userLoginData.getLogin())
                 .filter(user -> checkPassword(user, userLoginData));
     }
@@ -24,4 +25,8 @@ public class UserService implements UserLoginChecker {
         return user.getPassword().equals(userLoginData.getPassword());
     }
 
+    public boolean checkLoginExisting(String login) {
+        Optional<User> userByLogin = userProvider.findUserByLogin(login);
+        return userByLogin.isPresent();
+    }
 }

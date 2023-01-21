@@ -6,16 +6,15 @@ import org.example.library.model.Book;
 
 import java.util.List;
 
-public class BooksView implements View{
+public class BooksView implements View {
     private List<Book> availableBooks;
 
     @Override
     public void display() {
         BooksProvider books = new BooksDao();
         availableBooks = books.findAvailableBooks();
-        for (Book book: availableBooks) {
-            System.out.println(book.toString());
-                    }
+        for (Book book : availableBooks) {
+            System.out.println(book.getIsbn()+ "  " + book.getTitle()+ "  " + book.getCategory()+ "  " + book.getAuthor()+ "  " + book.getAmountAvailable());
         }
     }
-
+}

@@ -24,10 +24,9 @@ public class ApplicationContext {
         return activeUser;
     }
 
-    private static Set<UserRole> mapToUserRoles(List<Role> roles) {
+    private static Set<UserRole> mapToUserRoles(Set<Role> roles) {
         return roles.stream()
                 .map(role -> UserRole.find(role.getName()))
                 .collect(Collectors.toSet());
     }
-
 }

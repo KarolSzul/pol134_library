@@ -4,10 +4,7 @@ import org.example.library.api.UserRole;
 import org.example.library.model.Book;
 import org.example.library.model.User;
 import org.example.library.utils.HibernateUtil;
-import org.example.library.view.BooksView;
-import org.example.library.view.BorrowedBooksView;
-import org.example.library.view.LoginView;
-import org.example.library.view.View;
+import org.example.library.view.*;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
@@ -16,13 +13,13 @@ import java.util.Optional;
 
 public class Main {
     public static void main(String[] args) {
-        UserRole userRole = UserRole.find("USER");
-        System.out.println(userRole.USER.getName());
-
-        View view = new LoginView(Optional.empty());
-        view.display();
-        View borrowedBooksView = new BorrowedBooksView();
-        borrowedBooksView.display();
+//        UserRole userRole = UserRole.find("USER");
+//        System.out.println(userRole.USER.getName());
+//
+//        View view = new LoginView(Optional.empty());
+//        view.display();
+//        View borrowedBooksView = new BorrowedBooksView();
+//        borrowedBooksView.display();
 
 //        final String FIND_AVAILABLE_BOOKS = "from User";
 
@@ -35,7 +32,10 @@ public class Main {
 //            System.out.println(user.toString());
 //        }
 
-        }
+        View view = new NewUserView(Optional.empty());
+        view.display();
 
     }
+
+}
 

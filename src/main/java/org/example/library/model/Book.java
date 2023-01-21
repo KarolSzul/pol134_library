@@ -1,6 +1,5 @@
 package org.example.library.model;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,5 +23,4 @@ public class Book {
     @ManyToOne
     private Category category;
     private Integer amountAvailable;
-
 }

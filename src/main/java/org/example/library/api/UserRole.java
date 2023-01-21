@@ -16,5 +16,4 @@ public enum UserRole {
     public static UserRole find(String name) {
         return valueOf(name);
     }
-
 }

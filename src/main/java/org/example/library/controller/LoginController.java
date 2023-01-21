@@ -32,5 +32,4 @@ public class LoginController {
         }
         return new LoginView(Optional.of("Podano niepoprawne dane logowania"));
     }
-
 }
